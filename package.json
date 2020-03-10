@@ -1,0 +1,42 @@
+{
+  "name": "ts-discord-bot-boilerplate",
+  "version": "1.0.0",
+  "description": "TypeScript Discord bot.",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsc && node dist/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cornayy/ts-discord-bot-boilerplate.git"
+  },
+  "author": "Cornayy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cornayy/ts-discord-bot-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Cornayy/ts-discord-bot-boilerplate#readme",
+  "dependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/mongoose": "^5.5.17",
+    "@types/node-fetch": "^2.5.0",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.0.0",
+    "mongoose": "^5.7.5",
+    "node-fetch": "^2.6.0",
+    "typescript": "^3.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.3",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-typescript": "^4.0.1",
+    "eslint-config-node": "^4.0.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2"
+  }
+}
