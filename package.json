@@ -23,7 +23,7 @@
     "discord.js": "^11.5.1",
     "dotenv": "^8.0.0",
     "mongoose": "^5.7.5",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "typescript": "^3.6.2"
   },
   "devDependencies": {
