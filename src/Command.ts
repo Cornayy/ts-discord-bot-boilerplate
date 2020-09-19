@@ -46,8 +46,8 @@ export abstract class Command {
         }, this.conf.cooldown);
     }
 
-    public respond(channel: AnyChannel, message: EmbedOrMessage): Command {
-        channel.send(message);
+    public async respond(channel: AnyChannel, message: EmbedOrMessage): Promise<Command> {
+        await channel.send(message);
 
         return this;
     }

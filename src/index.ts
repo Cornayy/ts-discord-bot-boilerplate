@@ -4,5 +4,5 @@ import { Client } from './Client';
 
 dotenv.config();
 
-const client = new Client(settings);
-client.login(client.settings.token);
+// eslint-disable-next-line no-new
+new Client(settings);

@@ -16,6 +16,8 @@ export class Client extends DiscordClient implements IBotClient {
 
         this.commands = getCommands(this);
         loadEvents(this);
+
+        this.login(settings.token);
     }
 
     public userHasPermission(user: GuildMember, requiredPermissions: PermissionString[]): boolean {
