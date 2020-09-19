@@ -2,7 +2,6 @@
 import * as Discord from 'discord.js';
 import { Client } from '../Client';
 import { IEvent } from '../types';
-import { Logger } from '../utils/Logger';
 
 export default class Message implements IEvent {
     public client: Client;
