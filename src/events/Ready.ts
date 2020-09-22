@@ -1,8 +1,8 @@
 import { Client } from '../Client';
 import { Logger } from '../utils/Logger';
-import { IEvent } from '../types';
+import { BotEvent } from '../types';
 
-export default class Ready implements IEvent {
+export default class Ready implements BotEvent {
     public client: Client;
 
     constructor(client: Client) {

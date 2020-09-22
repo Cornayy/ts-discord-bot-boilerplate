@@ -1,9 +1,9 @@
 import { Message } from 'discord.js';
 import { Command } from '../Command';
-import { IBotClient } from '../types';
+import { BotClient } from '../types';
 
 export default class Ping extends Command {
-    constructor(client: IBotClient) {
+    constructor(client: BotClient) {
         super(client, {
             name: 'ping',
             description: 'Pings the bot.',

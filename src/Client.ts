@@ -1,14 +1,14 @@
-import { Collection, Client as DiscordClient, GuildMember, PermissionString } from 'discord.js';
-import { loadEvents } from './loaders/EventLoader';
-import { getCommands } from './loaders/CommandLoader';
-import { ISettings, IBotClient } from './types';
+import { Collection, Client as DiscordClient } from 'discord.js';
+import { loadEvents } from './managers/EventLoader';
+import { getCommands } from './managers/CommandLoader';
+import { BotSettings, BotClient } from './types';
 import { Command } from './Command';
 
-export class Client extends DiscordClient implements IBotClient {
-    public settings: ISettings;
+export class Client extends DiscordClient implements BotClient {
+    public settings: BotSettings;
     public commands: Collection<string, Command>;
 
-    public constructor(settings: ISettings) {
+    public constructor(settings: BotSettings) {
         super(settings.clientOptions || {});
 
         this.settings = settings;
@@ -18,9 +18,5 @@ export class Client extends DiscordClient implements IBotClient {
         loadEvents(this);
 
         this.login(settings.token);
-    }
-
-    public userHasPermission(user: GuildMember, requiredPermissions: PermissionString[]): boolean {
-        return user.hasPermission(requiredPermissions, false, true, true);
     }
 }

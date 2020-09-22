@@ -1,34 +1,38 @@
 import { User, Message, Guild } from 'discord.js';
-import { AnyChannel, IBotClient, ICommandOptions, EmbedOrMessage, IUserCooldown } from './types';
+import { AnyChannel, BotClient, CommandOptions, EmbedOrMessage, UserCooldown } from './types';
 
 export abstract class Command {
-    protected client: IBotClient;
-    public conf: ICommandOptions;
-    public cooldowns: Set<IUserCooldown>;
+    protected client: BotClient;
+    public conf: CommandOptions;
+    public cooldowns: Set<UserCooldown>;
 
-    constructor(client: IBotClient, options: ICommandOptions) {
+    constructor(client: BotClient, options: CommandOptions) {
         this.client = client;
-
         this.conf = {
             name: options.name,
             description: options.description || 'No information specified.',
-            usage: options.usage || '',
+            usage: options.usage || 'No usage specified.',
             category: options.category || 'Information',
             cooldown: options.cooldown || 1000,
             requiredPermissions: options.requiredPermissions || ['READ_MESSAGES']
         };
-
         this.cooldowns = new Set();
     }
 
-    public hasPermission(user: User, message: Message): boolean {
-        if (
-            !this.client.userHasPermission(message.member, this.conf.requiredPermissions) ||
+    public canRun(user: User, message: Message): boolean {
+        const onCooldown =
             [...this.cooldowns].filter(cd => cd.user === user && cd.guild === message.guild)
-                .length > 0
-        ) {
+                .length > 0;
+        const hasPermission = message.member.hasPermission(
+            this.conf.requiredPermissions,
+            false,
+            true,
+            true
+        );
+
+        if (!hasPermission || onCooldown) {
             message.channel.send(
-                "You don't have permission for this command or you are on cooldown."
+                'You do not have permission for this command or you are on cooldown.'
             );
             return false;
         }

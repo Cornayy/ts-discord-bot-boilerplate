@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Cornayy/ts-discord-bot-boilerplate#readme",
   "dependencies": {
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.3.1",
     "dotenv": "^8.0.0",
     "typescript": "^3.6.2"
   },

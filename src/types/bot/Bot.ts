@@ -3,7 +3,6 @@ import {
     TextChannel,
     DMChannel,
     GroupDMChannel,
-    GuildMember,
     PermissionString,
     PresenceData,
     ClientOptions,
@@ -14,13 +13,12 @@ import {
 } from 'discord.js';
 import { Command } from '../../Command';
 
-export interface IBotClient extends Client {
-    settings: ISettings;
+export interface BotClient extends Client {
+    settings: BotSettings;
     commands: Collection<string, Command>;
-    userHasPermission(user: GuildMember, requiredPermissions: PermissionString[]): boolean;
 }
 
-export interface ICommandOptions {
+export interface CommandOptions {
     name: string;
     description?: string;
     usage?: string;
@@ -29,7 +27,7 @@ export interface ICommandOptions {
     requiredPermissions: PermissionString[];
 }
 
-export interface ISettings {
+export interface BotSettings {
     presence: PresenceData;
     clientOptions?: ClientOptions;
     token?: string;
@@ -40,12 +38,12 @@ export interface ISettings {
     };
 }
 
-export interface IEvent {
-    client: IBotClient;
+export interface BotEvent {
+    client: BotClient;
     run(args?: any[]): void;
 }
 
-export interface IUserCooldown {
+export interface UserCooldown {
     user: User;
     guild: Guild;
 }

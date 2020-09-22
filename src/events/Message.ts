@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import * as Discord from 'discord.js';
+import { Message as DiscordMessage } from 'discord.js';
 import { Client } from '../Client';
-import { IEvent } from '../types';
+import { BotEvent } from '../types';
 
-export default class Message implements IEvent {
+export default class Message implements BotEvent {
     public client: Client;
 
     constructor(client: Client) {
@@ -11,7 +11,7 @@ export default class Message implements IEvent {
     }
 
     async run(args: any): Promise<void> {
-        const message: Discord.Message = args;
+        const message: DiscordMessage = args;
 
         if (message.author.bot || !message.content.startsWith(this.client.settings.prefix)) return;
 
@@ -20,7 +20,7 @@ export default class Message implements IEvent {
         const cmd = this.client.commands.get(command);
 
         if (!cmd) return;
-        if (!cmd.hasPermission(message.author, message)) return;
+        if (!cmd.canRun(message.author, message)) return;
 
         await cmd.run(message, argus);
         cmd.setCooldown(message.author, message.guild);

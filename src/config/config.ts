@@ -1,6 +1,6 @@
-import { ISettings } from '../types';
+import { BotSettings } from '../types/bot/Bot';
 
-export const settings: ISettings = {
+export const settings: BotSettings = {
     presence: {
         game: {
             name: '!help for commands',
