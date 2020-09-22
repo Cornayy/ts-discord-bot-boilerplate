@@ -24,8 +24,6 @@ export default class Message implements BotEvent {
 
         await cmd.run(message, argus);
 
-        if (message.guild) {
-            cmd.setCooldown(message.author, message.guild);
-        }
+        if (message.guild) cmd.setCooldown(message.author, message.guild);
     }
 }
