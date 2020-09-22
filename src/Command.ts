@@ -19,6 +19,12 @@ export abstract class Command {
         this.cooldowns = new Set();
     }
 
+    /**
+     * Checks if the user has permission to run the command.
+     * @param {User} user A Discord user.
+     * @param {Message} message The original message that was sent.
+     * @returns {boolean} Whether the user can run the command.
+     */
     public canRun(user: User, message: Message): boolean {
         const onCooldown =
             [...this.cooldowns].filter(cd => cd.user === user && cd.guild === message.guild)
@@ -39,6 +45,11 @@ export abstract class Command {
         return true;
     }
 
+    /**
+     * Sets the cooldown on a command for a Discord user.
+     * @param {User} user The user that will receive a cooldown.
+     * @param {Guild} guild The Discord server where the original message was sent.
+     */
     public setCooldown(user: User, guild: Guild): void {
         this.cooldowns.add({ user, guild });
 
@@ -50,11 +61,22 @@ export abstract class Command {
         }, this.conf.cooldown);
     }
 
+    /**
+     * Sends the message in the specified channel.
+     * @param {AnyChannel} channel Any Discord channel.
+     * @param {EmbedOrMessage} message The message or embed that will be sent.
+     * @returns {Promise<Command>} The original command, supports method chaining.
+     */
     public async respond(channel: AnyChannel, message: EmbedOrMessage): Promise<Command> {
         await channel.send(message);
 
         return this;
     }
 
+    /**
+     * The abstract run method for every command.
+     * @param {Message} message The original message object that triggered the command.
+     * @param {string[]} args The arguments that got sent with the message.
+     */
     public abstract async run(message: Message, args: string[]): Promise<void>;
 }

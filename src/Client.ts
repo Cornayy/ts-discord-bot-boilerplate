@@ -1,22 +1,22 @@
 import { Collection, Client as DiscordClient } from 'discord.js';
-import { loadEvents } from './managers/EventLoader';
-import { getCommands } from './managers/CommandLoader';
 import { BotSettings, BotClient } from './types';
 import { Command } from './Command';
+import { ActionManager } from './managers/ActionManager';
 
 export class Client extends DiscordClient implements BotClient {
+    private actionManager: ActionManager;
     public settings: BotSettings;
-    public commands: Collection<string, Command>;
 
     public constructor(settings: BotSettings) {
         super(settings.clientOptions || {});
 
+        this.actionManager = new ActionManager(this);
         this.settings = settings;
         this.settings.token = process.env.BOT_TOKEN;
-
-        this.commands = getCommands(this);
-        loadEvents(this);
-
         this.login(settings.token);
+    }
+
+    public get commands(): Collection<string, Command> {
+        return this.actionManager.commands;
     }
 }
