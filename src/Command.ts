@@ -29,12 +29,12 @@ export abstract class Command {
         const onCooldown =
             [...this.cooldowns].filter(cd => cd.user === user && cd.guild === message.guild)
                 .length > 0;
-        const hasPermission = message.member.hasPermission(
-            this.conf.requiredPermissions,
-            false,
-            true,
-            true
-        );
+        const hasPermission = message.member
+            ? message.member.hasPermission(this.conf.requiredPermissions, {
+                  checkAdmin: true,
+                  checkOwner: true
+              })
+            : false;
 
         if (!hasPermission || onCooldown) {
             message.channel.send(
@@ -42,6 +42,7 @@ export abstract class Command {
             );
             return false;
         }
+
         return true;
     }
 
