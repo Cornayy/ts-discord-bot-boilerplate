@@ -10,10 +10,10 @@ export class Client extends DiscordClient implements BotClient {
     public constructor(settings: BotSettings) {
         super(settings.clientOptions || {});
 
-        this.actionManager = new ActionManager(this);
         this.settings = settings;
         this.settings.token = process.env.BOT_TOKEN;
         this.login(settings.token);
+        this.actionManager = new ActionManager(this);
     }
 
     public get commands(): Collection<string, Command> {

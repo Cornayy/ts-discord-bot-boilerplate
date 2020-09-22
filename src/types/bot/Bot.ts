@@ -2,14 +2,14 @@ import {
     Client,
     TextChannel,
     DMChannel,
-    GroupDMChannel,
     PermissionString,
     PresenceData,
     ClientOptions,
-    RichEmbed,
+    MessageEmbed,
     Guild,
     User,
-    Collection
+    Collection,
+    NewsChannel
 } from 'discord.js';
 import { Command } from '../../Command';
 
@@ -48,5 +48,5 @@ export interface UserCooldown {
     guild: Guild;
 }
 
-export type AnyChannel = TextChannel | DMChannel | GroupDMChannel;
-export type EmbedOrMessage = RichEmbed | string;
+export type AnyChannel = TextChannel | DMChannel | NewsChannel;
+export type EmbedOrMessage = MessageEmbed | string;

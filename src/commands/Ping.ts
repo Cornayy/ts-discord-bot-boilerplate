@@ -10,7 +10,7 @@ export default class Ping extends Command {
             category: 'Information',
             usage: client.settings.prefix.concat('ping'),
             cooldown: 1000,
-            requiredPermissions: ['READ_MESSAGES']
+            requiredPermissions: ['SEND_MESSAGES']
         });
     }
 

@@ -2,7 +2,7 @@ import { BotSettings } from '../types/bot/Bot';
 
 export const settings: BotSettings = {
     presence: {
-        game: {
+        activity: {
             name: '!help for commands',
             type: 'PLAYING'
         }
