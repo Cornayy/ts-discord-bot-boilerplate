@@ -39,7 +39,6 @@ export interface BotSettings {
 }
 
 export interface BotEvent {
-    client: BotClient;
     run(args?: any[]): void;
 }
 

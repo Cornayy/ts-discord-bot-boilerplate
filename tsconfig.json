@@ -13,7 +13,9 @@
         "noImplicitThis": true,
         "inlineSourceMap": true,
         "moduleResolution": "node",
-        "sourceRoot": "src"
+        "sourceRoot": "src",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "include": [
         "src"

@@ -3,11 +3,7 @@ import { Logger } from '../utils/Logger';
 import { BotEvent } from '../types';
 
 export default class Ready implements BotEvent {
-    public client: Client;
-
-    constructor(client: Client) {
-        this.client = client;
-    }
+    constructor(private client: Client) {}
 
     public async run(): Promise<void> {
         if (this.client.user) {

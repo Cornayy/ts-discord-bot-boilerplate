@@ -1,4 +1,4 @@
-import { BotSettings } from '../types/bot/Bot';
+import { BotSettings } from '../types/bot/bot';
 
 export const settings: BotSettings = {
     presence: {

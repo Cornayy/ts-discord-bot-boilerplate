@@ -4,11 +4,7 @@ import { Client } from '../Client';
 import { BotEvent } from '../types';
 
 export default class Message implements BotEvent {
-    public client: Client;
-
-    constructor(client: Client) {
-        this.client = client;
-    }
+    constructor(private client: Client) {}
 
     public async run(args: any): Promise<void> {
         const message: DiscordMessage = args;

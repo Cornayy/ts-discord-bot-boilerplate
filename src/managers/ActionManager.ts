@@ -1,25 +1,21 @@
 import { Collection } from 'discord.js';
+import { Service } from 'typedi';
 import { join } from 'path';
 import { readdir, statSync } from 'fs';
-import { BotClient } from '../types/bot/Bot';
+import { BotClient } from '../types/bot/bot';
 import { Command } from '../Command';
 import { Logger } from '../utils/Logger';
 
+@Service()
 export class ActionManager {
-    public commands: Collection<string, Command>;
-
-    constructor(client: BotClient) {
-        this.commands = this.initializeCommands(client);
-        this.initializeEvents(client);
-    }
+    public commands: Collection<string, Command> = new Collection<string, Command>();
 
     /**
      * Parses files into commands from the configured command path.
      * @param {BotClient} client The original client, for access to the configuration.
      * @returns {Collection<string, Command>} A dictionary of every command in a [name, object] pair.
      */
-    private initializeCommands(client: BotClient): Collection<string, Command> {
-        const collection = new Collection<string, Command>();
+    public initializeCommands(client: BotClient): void {
         const { commands } = client.settings.paths;
 
         readdir(commands, (err, files) => {
@@ -36,19 +32,17 @@ export class ActionManager {
                     )).default;
                     const command = new Command(client);
 
-                    collection.set(command.conf.name, command);
+                    this.commands.set(command.conf.name, command);
                 }
             });
         });
-
-        return collection;
     }
 
     /**
      * Initializes every event from the configured event path.
      * @param {BotClient} client The original client, for access to the configuration.
      */
-    private initializeEvents(client: BotClient): void {
+    public initializeEvents(client: BotClient): void {
         const { events } = client.settings.paths;
 
         readdir(events, (err, files) => {

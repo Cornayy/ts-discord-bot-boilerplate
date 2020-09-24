@@ -1,8 +1,7 @@
+import 'reflect-metadata';
 import * as dotenv from 'dotenv';
-import { settings } from './config/config';
+import { Container } from 'typedi';
 import { Client } from './Client';
 
 dotenv.config();
-
-// eslint-disable-next-line no-new
-new Client(settings);
+Container.get(Client);
