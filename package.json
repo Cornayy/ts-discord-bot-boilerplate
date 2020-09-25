@@ -21,13 +21,15 @@
     "dotenv": "^8.0.0",
     "reflect-metadata": "^0.1.13",
     "typedi": "^0.8.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.6.2",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/node": "^12.7.3",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
-    "@types/dotenv": "^6.1.1",
     "eslint": "^6.1.0",
     "eslint-config-airbnb-typescript": "^4.0.1",
     "eslint-config-node": "^4.0.0",

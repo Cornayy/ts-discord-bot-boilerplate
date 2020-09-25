@@ -6,4 +6,4 @@ import { Client } from './Client';
 dotenv.config();
 
 // Initialize the Client using the IoC.
-Container.get(Client);
+Container.get<Client>(Client);
