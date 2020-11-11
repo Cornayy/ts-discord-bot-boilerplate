@@ -2,12 +2,10 @@ import { User, Message, Guild } from 'discord.js';
 import { AnyChannel, BotClient, CommandOptions, EmbedOrMessage, UserCooldown } from './types';
 
 export abstract class Command {
-    protected client: BotClient;
     public conf: CommandOptions;
     public cooldowns: Set<UserCooldown>;
 
-    constructor(client: BotClient, options: CommandOptions) {
-        this.client = client;
+    constructor(protected client: BotClient, options: CommandOptions) {
         this.conf = {
             name: options.name,
             description: options.description || 'No information specified.',

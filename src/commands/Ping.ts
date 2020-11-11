@@ -3,7 +3,7 @@ import { Command } from '../Command';
 import { BotClient } from '../types';
 
 export default class Ping extends Command {
-    constructor(protected client: BotClient) {
+    constructor(client: BotClient) {
         super(client, {
             name: 'ping',
             description: 'Pings the bot.',
