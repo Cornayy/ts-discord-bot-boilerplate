@@ -19,9 +19,9 @@ export class Client extends DiscordClient implements BotClient {
 
     private async initialize(): Promise<void> {
         try {
-            await this.login(configuration.token);
             this.actionManager.initializeCommands(this);
             this.actionManager.initializeEvents(this);
+            await this.login(configuration.token);
         } catch (e) {
             Logger.error(`Could not initialize bot: ${e}`);
         }
