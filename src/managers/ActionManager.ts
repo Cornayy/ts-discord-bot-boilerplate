@@ -60,7 +60,7 @@ export class ActionManager {
 
                 client.on(
                     eventName.charAt(0).toLowerCase() + eventName.slice(1),
-                    (...args: string[]) => event.run(...args)
+                    (...args: string[]) => event.run(args)
                 );
             });
         });

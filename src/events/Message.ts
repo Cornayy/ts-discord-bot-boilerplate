@@ -7,7 +7,7 @@ export default class Message implements BotEvent {
     constructor(private client: Client) {}
 
     public async run(args: any): Promise<void> {
-        const message: DiscordMessage = args;
+        const [message] = args;
 
         if (message.author.bot || !message.content.startsWith(this.client.settings.prefix)) return;
 
