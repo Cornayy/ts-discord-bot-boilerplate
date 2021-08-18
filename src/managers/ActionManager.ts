@@ -2,7 +2,7 @@ import { Collection } from 'discord.js';
 import { Service } from 'typedi';
 import { join } from 'path';
 import { readdir, statSync } from 'fs';
-import { BotClient } from '../types/bot/bot';
+import { BotClient } from '../types/bot/Bot';
 import { Command } from '../Command';
 import { Logger } from '../utils/Logger';
 
